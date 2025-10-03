@@ -24,8 +24,8 @@ int main()
 
     z = sqrt(pow(x, 2) + pow(y, 2));
     p = x + y + z;
-    std::cout << "Гипотенуза = " << z << "тип - double от " << DBL_MIN << "до " << DBL_MAX << std::endl;
-    std::cout << "Периметр = " << p << "тип - double от " << DBL_MIN << "до " << DBL_MAX << std::endl;
+    std::cout << "Гипотенуза = " << z << " тип - double от " << DBL_MIN << "до " << DBL_MAX << std::endl;
+    std::cout << "Периметр = " << p << " тип - double от " << DBL_MIN << "до " << DBL_MAX << std::endl;
 
 
 
