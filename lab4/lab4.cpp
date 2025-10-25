@@ -47,7 +47,7 @@ int main()
 	std::cout << std::endl;
 	const int l = 3;
 	const int w = 4;
-	int nl = 1;
+	int nl = 0;
 	int minsum = INT_MAX;
 	int matrix[l][w];
 	std::cout << "введите 12 элементов матрицы" << std::endl;
@@ -66,13 +66,13 @@ int main()
 			nl = i;
 		}
 	}
-	std::cout << "Номер строки подходящей по условию " << nl << std::endl;
+	std::cout << "Номер строки подходящей по условию " << nl + 1 << std::endl;
 		
 	
 	for (int j = 0; j < w; ++j) { 
 		matrix[nl][j] = 0;
 	}
-	std::cout << "Матрица после замены " << nl << " строки на 0" << std::endl;
+	std::cout << "Матрица после замены " << nl + 1 << " строки на 0" << std::endl;
 	for (int i = 0; i < l; ++i) {
 		for (int j = 0; j < w; ++j) {
 			std::cout << matrix[i][j] << " ";
