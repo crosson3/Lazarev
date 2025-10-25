@@ -14,19 +14,19 @@ int main()
 	char minsecond = 9;
 	int num1 = abs(arr[0]);
 	int num2 = abs(arr[3]);
-	while (num1 > 0) {		//минимальное первое
+	while (num1 > 0) {		
 		if (num1 % 10 < minfirst) {
 			minfirst = num1 % 10;
 		}
 		num1 /= 10;
 	}
-	while (num2 > 0) {		//минимальное последнее
+	while (num2 > 0) {		
 		if (num2 % 10 < minsecond) {
 			minsecond = num2 % 10;
 		}
 		num2 /= 10;
 	}
-	if (minfirst == minsecond) { //массив в порядке возрастания
+	if (minfirst == minsecond) { 
 		for (int i = 0; i < msize; ++i) {
 			for (int j = i + 1; j < msize; ++j) {
 				if (arr[i] > arr[j]) {
@@ -47,7 +47,7 @@ int main()
 	std::cout << std::endl;
 	const int l = 3;
 	const int w = 4;
-	int nl = 0;
+	int nl = 1;
 	int minsum = INT_MAX;
 	int matrix[l][w];
 	std::cout << "введите 12 элементов матрицы" << std::endl;
@@ -56,7 +56,7 @@ int main()
 			std::cin >> matrix[i][j];
 		}
 	}
-	for (int i = 0; i < l; ++i) { //поиск строки близкой суммой к 0
+	for (int i = 0; i < l; ++i) { 
 		int sum = 0;
 		for (int j = 0; j < w; ++j) {
 			sum += matrix[i][j];
@@ -66,10 +66,10 @@ int main()
 			nl = i;
 		}
 	}
-	std::cout << "Номер строки подходящей по условию " << nl + 1 << std::endl;
+	std::cout << "Номер строки подходящей по условию " << nl << std::endl;
 		
 	
-	for (int j = 0; j < w; ++j) { //замена эл-ов нужной строки на 0
+	for (int j = 0; j < w; ++j) { 
 		matrix[nl][j] = 0;
 	}
 	std::cout << "Матрица после замены " << nl << " строки на 0" << std::endl;
