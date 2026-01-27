@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <vector>
 #include <array>
 #include <cmath>
@@ -17,6 +17,10 @@ void pushFront(std::vector<int>& vec, int value) {
 }
 
 void pushBack(std::vector<int>& vec, int value) {
+    if (vec.size() == vec.capacity()) {
+        int newCap = (vec.capacity() == 0) ? 1 : vec.capacity() * 2;
+        vec.reserve(newCap);
+    }
     vec.push_back(value);
 }
 
