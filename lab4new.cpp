@@ -1,8 +1,9 @@
-﻿#include <iostream>
+#include <iostream>
+#include <algorithm>
 
 int main()
 {
-    
+
     const int msize = 7;
     int arr[msize];
     std::cout << "введите 7 элементов массива:" << std::endl;
@@ -19,8 +20,8 @@ int main()
     }
 
     if (div) {
-        
-        for (int i = 0; i < msize; ++i) {
+
+        for (int i = 0; i < msize - 1; ++i) {
             for (int j = i + 1; j < msize; ++j) {
                 if (arr[i] > arr[j]) {
                     std::swap(arr[i], arr[j]);
@@ -47,7 +48,7 @@ int main()
         }
     }
 
-    int maxNegative = -1;
+    int maxNegative = 0;
     int numCol = -1;
     for (int j = 0; j < cols; ++j) {
         int countNegative = 0;
@@ -61,17 +62,21 @@ int main()
             numCol = j;
         }
     }
-
-    for (int i = 0; i < rows; ++i) {
-        matrix[i][numCol] = -1;
-    }
-
-    std::cout << "матрица после замены столбца " << numCol + 1 << " на -1:" << std::endl;
-    for (int i = 0; i < rows; ++i) {
-        for (int j = 0; j < cols; ++j) {
-            std::cout << matrix[i][j] << " ";
+    if (numCol != -1) {
+         
+        for (int i = 0; i < rows; ++i) {
+            matrix[i][numCol] = -1;
         }
-        std::cout << std::endl;
+        std::cout << "матрица после замены столбца " << numCol + 1 << " на -1:" << std::endl;
+        for (int i = 0; i < rows; ++i) {
+            for (int j = 0; j < cols; ++j) {
+                std::cout << matrix[i][j] << " ";
+            }
+            std::cout << std::endl;
+        }
+    }
+    else {
+        std::cout << "отрицательных нет" << std::endl;
     }
 
     return 0;
