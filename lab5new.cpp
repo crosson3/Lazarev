@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <cmath>
 #include <algorithm>
 
@@ -6,7 +6,7 @@ int calc(int n) {
     int absN = std::abs(n);
     if (absN == 0) return 1;
 
-    int maxNum = 0;
+    int maxNum = -1;
     int temp = absN;
     
     while (temp > 0) {
@@ -27,21 +27,29 @@ int calc(int n) {
 int calc(int a, int b, int c) {
     
     if ((a != b) && (b != c) && (a != c)) {
-        return ((abs(a) + abs(b) + abs(c)) / 3);
+        int arr[3] = { a, b, c };
+
+        if (std::abs(arr[0]) > std::abs(arr[1])) {
+            std::swap(arr[0], arr[1]);
+        }
+        if (std::abs(arr[1]) > std::abs(arr[2])) {
+            std::swap(arr[1], arr[2]);
+        }
+        if (std::abs(arr[0]) > std::abs(arr[1])) {
+            std::swap(arr[0], arr[1]);
+        }
+        return arr[1];
     }
     else {
         return std::min({a, b, c});
     }
 }
 
-void calc_radius() {
-    int radius;
-    std::cout << "введите радиус: ";
-    std::cin >> radius;
+void calc_radius(int radius) {
 
     const double pi = 13.1415;
 
-    double oneNumber = (4/3) * pi * std::pow(radius, 3);
+    double oneNumber = (4.0/3.0) * pi * std::pow(radius, 3);
     
     double s = 4 * pi * std::pow(radius, 2);
 
@@ -84,7 +92,10 @@ int main() {
 
     }
     else if (point == 2) {
-        calc_radius();
+        int r;
+        std::cout << "введите радиус: " << std::endl;
+        std::cin >> r;
+        calc_radius(r);
     }
     else {
         std::cout << "неверный выбор пункта" << std::endl;
