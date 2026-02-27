@@ -39,10 +39,8 @@ watch& watch::operator=(const watch& other) {
     year = other.year;
     hours = other.hours;
     minutes = other.minutes;
-
     delete tasks; 
     tasks = new std::vector<std::string>(*(other.tasks)); 
-
     return *this;
 }
 
@@ -58,11 +56,9 @@ void watch::add_time(int d, int h, int m) {
     minutes += m;
     hours += minutes / 60;
     minutes %= 60;
-
     hours += h;
     day += (hours / 24) + d;
     hours %= 24;
-
     
     int days_in_month[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
@@ -78,7 +74,6 @@ void watch::add_time(int d, int h, int m) {
     }
 }
 
-
 void watch::add_task(const std::string& task) {
     for (const auto& t : *tasks) {
         if (t == task) return;
@@ -88,7 +83,6 @@ void watch::add_task(const std::string& task) {
 
 watch watch::operator+(const watch& other) const {
     watch result;
-    
     if (this->is_later(other)) {
         result = *this;
     }
@@ -97,7 +91,6 @@ watch watch::operator+(const watch& other) const {
     }
 
     result.add_time(7, 1, 0);
-
     result.tasks->clear();
 
     for (const auto& t : *(this->tasks)) {
@@ -106,13 +99,11 @@ watch watch::operator+(const watch& other) const {
     for (const auto& t : *(other.tasks)) {
         result.add_task(t);
     }
-
     return result;
 }
 
 watch watch::operator/(const watch& other) const {
     watch result;
-    
     if (this->is_later(other)) {
         result = other;
     }
@@ -121,7 +112,6 @@ watch watch::operator/(const watch& other) const {
     }
 
     result.add_time(3, 0, 0);
-
     result.tasks->clear();
 
     int count1 = this->tasks->empty() ? 0 : rand() % (this->tasks->size() + 1);
@@ -133,7 +123,6 @@ watch watch::operator/(const watch& other) const {
     for (int i = 0; i < count2; ++i) {
         result.add_task((*other.tasks)[i]);
     }
-
     return result;
 }
 
@@ -154,4 +143,5 @@ void watch::print_info() const {
         std::cout << "]";
     }
     std::cout << std::endl;
+
 }
